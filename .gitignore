@@ -1,0 +1,47 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# IDE specific files
+.idea
+*.iml
+*.iws
+*.ipr
+
+# Go build output
+_obj
+_test
+*.out
+*.prof
+
+# Go coverage output
+
+# Dependency management
+/vendor
+
+# Env files
+.env
+
+# OS generated files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Logs
+*.log
+
+# Other
+*.swp
