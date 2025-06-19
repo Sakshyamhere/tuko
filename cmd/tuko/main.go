@@ -9,6 +9,7 @@ import (
 	"net/http"
 	"sakshyahere/tuko/internal/config"
 	"sakshyahere/tuko/internal/controller"
+	"sakshyahere/tuko/internal/controller/auth"
 	"sakshyahere/tuko/internal/di"
 	"sakshyahere/tuko/internal/route"
 )
@@ -44,8 +45,8 @@ func registerRoutes(e *echo.Echo) {
 		log.Fatalf("failed to initialize app: %v", err)
 	}
 	// Inject controller and register routes
-	err = container.Invoke(func(userController *controller.UserController) {
-		route.RegisterRoutes(e, userController)
+	err = container.Invoke(func(userController *controller.UserController, authController *auth.AuthController) {
+		route.RegisterRoutes(e, userController, authController)
 	})
 	if err != nil {
 		slog.Error("failed to register routes", "error", err)

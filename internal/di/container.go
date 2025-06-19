@@ -5,9 +5,12 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"sakshyahere/tuko/internal/controller"
+	authController "sakshyahere/tuko/internal/controller/auth"
 	"sakshyahere/tuko/internal/db"
 	"sakshyahere/tuko/internal/repository"
+	authRepository "sakshyahere/tuko/internal/repository/auth"
 	"sakshyahere/tuko/internal/service"
+	authService "sakshyahere/tuko/internal/service/auth"
 )
 
 func BuildContainer() *dig.Container {
@@ -19,12 +22,15 @@ func BuildContainer() *dig.Container {
 
 	// Repositories
 	container.Provide(repository.NewUserRepository)
+	container.Provide(authRepository.NewAuthRepository)
 
 	// Services
 	container.Provide(service.NewUserService)
+	container.Provide(authService.NewAuthService)
 
 	// Controllers
 	container.Provide(controller.NewUserController)
+	container.Provide(authController.NewAuthController)
 
 	return container
 }

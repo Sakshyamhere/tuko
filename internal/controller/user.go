@@ -16,5 +16,10 @@ func NewUserController(userService service.UserService) *UserController {
 
 func (ctrl *UserController) GetUser(ctx echo.Context) error {
 	message := ctrl.userService.GetUser()
-	return ctx.JSON(http.StatusOK, message)
+	id := ctx.Get("user_id")
+	res := map[string]interface{}{
+		"id":      id,
+		"message": message,
+	}
+	return ctx.JSON(http.StatusOK, res)
 }
